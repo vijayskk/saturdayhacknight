@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    section {
+        margin-bottom: 40px;
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        text-align: left;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>Social AntiFake API Documentation</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Endpoints</h2>
+            <p>Here are the available endpoints of the API:</p>
+            <table>
+                <tr>
+                  <th>Key</th>
+                  <th>Value</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>username</td>
+                  <td>Text</td>
+                  <td>abc123</td>
+                </tr>
+                <tr>
+                  <td>fullname</td>
+                  <td>Text</td>
+                  <td>John Doe</td>
+                </tr>
+                <tr>
+                  <td>profile_picture</td>
+                  <td>Text</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>description</td>
+                  <td>Text</td>
+                  <td>Hello there</td>
+                </tr>
+                <tr>
+                  <td>external_link</td>
+                  <td>Text</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>private_account</td>
+                  <td>Text</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>posts</td>
+                  <td>Text</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>followers</td>
+                  <td>Text</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>following</td>
+                  <td>Text</td>
+                  <td>10</td>
+                </tr>
+              </table>
+              
+              
+            <ul>
+                <li><strong>POST /predict_account/</strong>: Predicts whether a social media account is fake or not.
+                </li>
+                <li><strong>POST /create_user/</strong>: Creates a new user account.</li>
+                <li><strong>GET /user/{id}/</strong>: Retrieves details of a specific user.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>POST /predict_account/</h2>
+            <p>Predicts whether a social media account is fake or not.</p>
+            <h3>Request Parameters</h3>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>username</td>
+                    <td>The username of the social media account.</td>
+                </tr>
+                <tr>
+                    <td>fullname</td>
+                    <td>The full name of the account owner.</td>
+                </tr>
+                <tr>
+                    <td>profile_picture</td>
+                    <td>Whether there is a profile picture (0 for no, 1 for yes).</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>The description of the account.</td>
+                </tr>
+                <tr>
+                    <td>external_link</td>
+                    <td>Whether there is an external link or URL in the description (0 for no, 1 for yes).</td>
+                </tr>
+                <!-- Add more parameters as needed -->
+            </table>
+            <h3>Response</h3>
+            <p>The response will indicate whether the account is fake or not.</p>
+            <p>If the account is fake, the response will be:</p>
+            <pre>{"result": "The account is fake"}</pre>
+            <p>If the account is not fake, the response will be:</p>
+            <pre>{"result": "The account is NOT fake"}</pre>
+        </section>
+        <section>
+            <h2>POST /create_user/</h2>
+            <p>Creates a new user account.</p>
+            <h3>Request Parameters</h3>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>username</td>
+                    <td>The username of the new user.</td>
+                </tr>
+                <tr>
+                    <td>password</td>
+                    <td>The password of the new user.</td>
+                </tr>
+                <!-- Add more parameters as needed -->
+            </table>
+            <h3>Response</h3>
+            <p>The response will indicate the success or failure of the user creation.</p>
+            <p>If the user is created successfully, the response will be:</p>
+            <pre>{"message": "User created successfully"}</pre>
+            <p>If there is an error during user creation, the response will include an error message.</p>
+        </section>
+        <section>
+            <h2>GET /user/{id}/</h2>
+            <p>Retrieves details of a specific user.</p>
+            <h3>Path Parameters</h3>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>The unique identifier of the user.</td>
+                </tr>
+            </table>
+            <h3>Response</h3>
+            <p>The response will include details of the user.</p>
+            <p>Example response:</p>
+            <pre>{"username": "example_user", "email": "example@example.com", "age": 30}</pre>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Vijay Satheesh for saturdayhacknight</p>
+    </footer>
+</body>
+
+</html>

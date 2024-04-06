@@ -78,3 +78,7 @@ def predict_account(request):
         return HttpResponse(result)
 
     return HttpResponse("Bad Request")
+
+def home(request):
+    print("Here")
+    return render(request , "home.html")
